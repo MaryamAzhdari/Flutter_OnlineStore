@@ -5,33 +5,17 @@ import 'package:online_store/views/custom_widgets/auth_top_part.dart';
 import 'package:online_store/views/custom_widgets/custom_button.dart';
 import 'package:online_store/views/screens/authentication/signup_screen.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
-
-  @override
-  State<LoginScreen> createState() => _LoginScreenState();
-}
-
-class _LoginScreenState extends State<LoginScreen> {
-//const LoginScreen({super.key});
+//توی آموزش اصلی از نوع استیت فول هست
+class LoginScreen extends StatelessWidget {
+  //const LoginScreen({super.key});
   //set for validation
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final AuthController _authController = AuthController();
   late String email;
   late String password;
   bool isLoading = false;
-  loginUser() async {
-    setState(() {
-      isLoading = true;
-    });
-    await _authController
-        .signInUsers(context: context, email: email, password: password)
-        .whenComplete(() {
-      setState(() {
-        isLoading = false;
-      });
-    });
-  }
+
+  LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -139,15 +123,18 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: Align(
                           alignment: FractionalOffset.bottomCenter,
                           child: InkWell(
-                              onTap: () {
+                              onTap: () async{
                                 if (_formKey.currentState!.validate()) {
-                                  loginUser();
+                                  // setState((){
+                                  //   isLoading = true;
+                                  // });
+                                  await _authController.signInUsers(
+                                      context: context,
+                                      email: email,
+                                      password: password);
                                 }
                               },
-                              child: Custom_Button(
-                                title: 'Login',
-                                isLoading: isLoading,
-                              ))),
+                              child: const Custom_Button(title: 'Login',isLoading: false,))),
                     ),
                     const SizedBox(
                       height: 20,
