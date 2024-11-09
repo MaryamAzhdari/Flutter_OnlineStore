@@ -180,16 +180,15 @@ class _SignupScreenState extends State<SignupScreen> {
                     Expanded(
                       child: Align(
                         alignment: FractionalOffset.bottomCenter,
-                        child: InkWell(
-                            onTap: () {
-                              if (_formKey.currentState!.validate()) {
-                                signUpUser();
-                              }
-                            },
-                            child: Custom_Button(
-                              title: 'Sign up',
-                              isLoading: isLoading,
-                            )),
+                        child: Custom_Button(
+                          onTap: () {
+                          if (_formKey.currentState!.validate()) {
+                            signUpUser();
+                          }
+                        },
+                          title: 'Sign up',
+                          isLoading: isLoading,
+                        ),
                       ),
                     ),
                     const SizedBox(

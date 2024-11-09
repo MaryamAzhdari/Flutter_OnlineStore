@@ -13,7 +13,6 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-//const LoginScreen({super.key});
   //set for validation
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final AuthController _authController = AuthController();
@@ -138,16 +137,28 @@ class _LoginScreenState extends State<LoginScreen> {
                     Expanded(
                       child: Align(
                           alignment: FractionalOffset.bottomCenter,
-                          child: InkWell(
-                              onTap: () {
+                          child: 
+                          Custom_Button(
+                            onTap: () {
                                 if (_formKey.currentState!.validate()) {
                                   loginUser();
                                 }
                               },
-                              child: Custom_Button(
                                 title: 'Login',
                                 isLoading: isLoading,
-                              ))),
+                              )
+                             
+                          // InkWell(
+                          //     onTap: () {
+                          //       if (_formKey.currentState!.validate()) {
+                          //         loginUser();
+                          //       }
+                          //     },
+                          //     child: Custom_Button(
+                          //       title: 'Login',
+                          //       isLoading: isLoading,
+                          //     ))
+                              ),
                     ),
                     const SizedBox(
                       height: 20,

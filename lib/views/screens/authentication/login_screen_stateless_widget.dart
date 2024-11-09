@@ -6,7 +6,8 @@ import 'package:online_store/views/custom_widgets/custom_button.dart';
 import 'package:online_store/views/screens/authentication/signup_screen.dart';
 
 //توی آموزش اصلی از نوع استیت فول هست
-class LoginScreen extends StatelessWidget {
+// ignore: must_be_immutable
+class LoginScreen_Stateless extends StatelessWidget {
   //const LoginScreen({super.key});
   //set for validation
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -15,7 +16,7 @@ class LoginScreen extends StatelessWidget {
   late String password;
   bool isLoading = false;
 
-  LoginScreen({super.key});
+  LoginScreen_Stateless({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -122,19 +123,15 @@ class LoginScreen extends StatelessWidget {
                     Expanded(
                       child: Align(
                           alignment: FractionalOffset.bottomCenter,
-                          child: InkWell(
-                              onTap: () async{
+                          child: Custom_Button(
+                            onTap: () async{
                                 if (_formKey.currentState!.validate()) {
-                                  // setState((){
-                                  //   isLoading = true;
-                                  // });
                                   await _authController.signInUsers(
                                       context: context,
                                       email: email,
                                       password: password);
-                                }
-                              },
-                              child: const Custom_Button(title: 'Login',isLoading: false,))),
+                                }},
+                                title: 'Login',isLoading: false,)),
                     ),
                     const SizedBox(
                       height: 20,
