@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:online_store/controllers/auth_controller.dart';
-import 'package:online_store/views/custom_widgets/auth_top_part.dart';
-import 'package:online_store/views/custom_widgets/custom_button.dart';
+import 'package:online_store/theme.dart';
+import 'package:online_store/views/widgets/custom_widgets/auth_top_part.dart';
+import 'package:online_store/views/widgets/custom_widgets/custom_button.dart';
 import 'package:online_store/views/screens/authentication/signup_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -36,9 +36,9 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     //final themeData = Theme.of(context);
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Login'),
-      ),
+      // appBar: AppBar(
+      //   title: const Text('Login'),
+      // ),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
@@ -58,11 +58,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     Align(
                       alignment: Alignment.topLeft,
                       child: Text("Email",
-                          style: GoogleFonts.getFont('Nunito Sans',
-                              color: Colors.black,
-                              fontWeight: FontWeight.w600,
-                              letterSpacing: 0.2,
-                              fontSize: 14)),
+                          style: Theme.of(context).textTheme.titleMedium),
                     ),
                     TextFormField(
                       onChanged: (value) {
@@ -77,15 +73,14 @@ class _LoginScreenState extends State<LoginScreen> {
                       },
                       initialValue: 'test@gmail.com',
                       decoration: InputDecoration(
-                          fillColor: Colors.white,
+                          fillColor: AppTheme.mcTextFormFieldBackColor,
                           filled: true,
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(20)),
                           focusedBorder: InputBorder.none,
                           enabledBorder: InputBorder.none,
                           labelText: 'Enter your email',
-                          labelStyle: GoogleFonts.getFont('Nunito Sans',
-                              fontSize: 14, letterSpacing: 0.1),
+                          labelStyle: Theme.of(context).textTheme.titleSmall,
                           prefixIcon: const Icon(
                             Icons.email_rounded,
                             size: 20,
@@ -97,11 +92,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     Align(
                       alignment: Alignment.topLeft,
                       child: Text("Password",
-                          style: GoogleFonts.getFont('Nunito Sans',
-                              color: Colors.black,
-                              fontWeight: FontWeight.w600,
-                              letterSpacing: 0.2,
-                              fontSize: 14)),
+                          style: Theme.of(context).textTheme.titleMedium),
                     ),
                     TextFormField(
                       onChanged: (value) {
@@ -116,15 +107,14 @@ class _LoginScreenState extends State<LoginScreen> {
                       },
                       initialValue: 'test_test_',
                       decoration: InputDecoration(
-                          fillColor: Colors.white,
+                          fillColor: AppTheme.mcTextFormFieldBackColor,
                           filled: true,
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(20)),
                           focusedBorder: InputBorder.none,
                           enabledBorder: InputBorder.none,
                           labelText: 'Enter your password',
-                          labelStyle: GoogleFonts.getFont('Nunito Sans',
-                              fontSize: 14, letterSpacing: 0.1),
+                          labelStyle: Theme.of(context).textTheme.titleSmall,
                           prefixIcon: const Icon(
                             Icons.password_rounded,
                             size: 20,
@@ -137,17 +127,16 @@ class _LoginScreenState extends State<LoginScreen> {
                     Expanded(
                       child: Align(
                           alignment: FractionalOffset.bottomCenter,
-                          child: 
-                          Custom_Button(
+                          child: Custom_Button(
                             onTap: () {
-                                if (_formKey.currentState!.validate()) {
-                                  loginUser();
-                                }
-                              },
-                                title: 'Login',
-                                isLoading: isLoading,
-                              )
-                             
+                              if (_formKey.currentState!.validate()) {
+                                loginUser();
+                              }
+                            },
+                            title: 'Login',
+                            isLoading: isLoading,
+                          )
+
                           // InkWell(
                           //     onTap: () {
                           //       if (_formKey.currentState!.validate()) {
@@ -158,7 +147,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           //       title: 'Login',
                           //       isLoading: isLoading,
                           //     ))
-                              ),
+                          ),
                     ),
                     const SizedBox(
                       height: 20,
@@ -167,13 +156,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text('You need an account',
-                            style: GoogleFonts.getFont(
-                              'Nunito Sans',
-                              color: const Color.fromARGB(255, 60, 59, 59),
-                              fontWeight: FontWeight.bold,
-                              letterSpacing: 0.2,
-                              fontSize: 14,
-                            )),
+                            style: Theme.of(context).textTheme.titleSmall),
                         const SizedBox(
                           width: 20,
                         ),
@@ -181,19 +164,11 @@ class _LoginScreenState extends State<LoginScreen> {
                           onTap: () {
                             Navigator.push(context,
                                 MaterialPageRoute(builder: (context) {
-                              return SignupScreen();
+                              return const SignupScreen();
                             }));
                           },
-                          child: Text(
-                            'Sign up',
-                            style: GoogleFonts.getFont(
-                              'Nunito Sans',
-                              color: const Color.fromARGB(255, 17, 1, 195),
-                              fontWeight: FontWeight.bold,
-                              letterSpacing: 0.2,
-                              fontSize: 14,
-                            ),
-                          ),
+                          child: Text('Sign up',
+                              style: Theme.of(context).textTheme.labelMedium),
                         )
                       ],
                     ),

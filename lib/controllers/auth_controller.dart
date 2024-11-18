@@ -1,8 +1,11 @@
 import 'dart:convert';
+import 'package:flutter/material.dart';
 import 'package:online_store/global_variable.dart';
-import 'package:online_store/models/user.dart';
 import 'package:http/http.dart' as http;
+import 'package:online_store/models/user_model.dart';
 import 'package:online_store/services/manage_http_response.dart';
+import 'package:online_store/views/screens/authentication/login_screen.dart';
+import 'package:online_store/views/screens/root_bottum_navigation.dart';
 
 class AuthController {
   Future<void> signUpUsers(
@@ -11,7 +14,7 @@ class AuthController {
       required String email,
       required String password}) async {
     try {
-      User user = User(
+      UserModel userModel = UserModel(
           id: '',
           fullName: fullName,
           email: email,
@@ -22,7 +25,7 @@ class AuthController {
           token: '');
 
       http.Response response = await http.post(Uri.parse('$uri/api/signup'),
-          body: user
+          body: userModel
               .toJson(), //Convert the user object to json for the request body
           headers: <String, String>{
             'Content-Type':
@@ -33,6 +36,7 @@ class AuthController {
           response: response,
           context: context,
           onSuccess: () {
+            Navigator.push(context,MaterialPageRoute(builder: (context)=>const  LoginScreen()));
             showSnackBar(context, 'Account has been created for you');
           });
     } catch (e) {
@@ -56,6 +60,7 @@ class AuthController {
 
       manageHttpResponse(
           response: response, context: context, onSuccess: () {
+            Navigator.push(context,MaterialPageRoute(builder: (context)=>  RootNottumNavigationScreen()));
             showSnackBar(context, 'Logged In');
           });
     } catch (e) {

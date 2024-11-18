@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:online_store/controllers/auth_controller.dart';
-import 'package:online_store/views/custom_widgets/auth_top_part.dart';
-import 'package:online_store/views/custom_widgets/custom_button.dart';
+import 'package:online_store/theme.dart';
+import 'package:online_store/views/widgets/custom_widgets/auth_top_part.dart';
+import 'package:online_store/views/widgets/custom_widgets/custom_button.dart';
 import 'package:online_store/views/screens/authentication/login_screen.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -41,9 +41,9 @@ class _SignupScreenState extends State<SignupScreen> {
   Widget build(BuildContext context) {
     //final themeData = Theme.of(context);
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Sign up'),
-      ),
+      // appBar: AppBar(
+      //   title: const Text('Sign up'),
+      // ),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
@@ -62,11 +62,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     Align(
                       alignment: Alignment.topLeft,
                       child: Text("Email",
-                          style: GoogleFonts.getFont('Nunito Sans',
-                              color: Colors.black,
-                              fontWeight: FontWeight.w600,
-                              letterSpacing: 0.2,
-                              fontSize: 14)),
+                          style: Theme.of(context).textTheme.titleMedium),
                     ),
                     TextFormField(
                       onChanged: (value) {
@@ -81,15 +77,14 @@ class _SignupScreenState extends State<SignupScreen> {
                       },
                       initialValue: 'test@gmail.com',
                       decoration: InputDecoration(
-                          fillColor: Colors.white,
+                          fillColor:  AppTheme.mcTextFormFieldBackColor,
                           filled: true,
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(20)),
                           focusedBorder: InputBorder.none,
                           enabledBorder: InputBorder.none,
                           labelText: 'Enter your email',
-                          labelStyle: GoogleFonts.getFont('Nunito Sans',
-                              fontSize: 14, letterSpacing: 0.1),
+                          labelStyle: Theme.of(context).textTheme.titleSmall,
                           prefixIcon: const Icon(
                             Icons.email_rounded,
                             size: 20,
@@ -101,11 +96,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     Align(
                       alignment: Alignment.topLeft,
                       child: Text("FullName",
-                          style: GoogleFonts.getFont('Nunito Sans',
-                              color: Colors.black,
-                              fontWeight: FontWeight.w600,
-                              letterSpacing: 0.2,
-                              fontSize: 14)),
+                          style: Theme.of(context).textTheme.titleMedium),
                     ),
                     TextFormField(
                       onChanged: (value) {
@@ -120,15 +111,14 @@ class _SignupScreenState extends State<SignupScreen> {
                       },
                       initialValue: 'test',
                       decoration: InputDecoration(
-                          fillColor: Colors.white,
+                          fillColor:  AppTheme.mcTextFormFieldBackColor,
                           filled: true,
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(20)),
                           focusedBorder: InputBorder.none,
                           enabledBorder: InputBorder.none,
                           labelText: 'Enter your FullName',
-                          labelStyle: GoogleFonts.getFont('Nunito Sans',
-                              fontSize: 14, letterSpacing: 0.1),
+                          labelStyle: Theme.of(context).textTheme.titleSmall,
                           prefixIcon: const Icon(
                             Icons.email_rounded,
                             size: 20,
@@ -140,11 +130,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     Align(
                       alignment: Alignment.topLeft,
                       child: Text("Password",
-                          style: GoogleFonts.getFont('Nunito Sans',
-                              color: Colors.black,
-                              fontWeight: FontWeight.w600,
-                              letterSpacing: 0.2,
-                              fontSize: 14)),
+                          style: Theme.of(context).textTheme.titleMedium),
                     ),
                     TextFormField(
                       onChanged: (value) {
@@ -159,15 +145,14 @@ class _SignupScreenState extends State<SignupScreen> {
                       },
                       initialValue: 'test_test_',
                       decoration: InputDecoration(
-                          fillColor: Colors.white,
+                          fillColor: AppTheme.mcTextFormFieldBackColor,
                           filled: true,
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(20)),
                           focusedBorder: InputBorder.none,
                           enabledBorder: InputBorder.none,
                           labelText: 'Enter your password',
-                          labelStyle: GoogleFonts.getFont('Nunito Sans',
-                              fontSize: 14, letterSpacing: 0.1),
+                          labelStyle: Theme.of(context).textTheme.titleSmall,
                           prefixIcon: const Icon(
                             Icons.password_rounded,
                             size: 20,
@@ -198,13 +183,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text('Already you have an account',
-                            style: GoogleFonts.getFont(
-                              'Nunito Sans',
-                              color: const Color.fromARGB(255, 60, 59, 59),
-                              fontWeight: FontWeight.bold,
-                              letterSpacing: 0.2,
-                              fontSize: 14,
-                            )),
+                            style: Theme.of(context).textTheme.titleSmall),
                         const SizedBox(
                           width: 20,
                         ),
@@ -212,18 +191,12 @@ class _SignupScreenState extends State<SignupScreen> {
                           onTap: () {
                             Navigator.push(context,
                                 MaterialPageRoute(builder: (context) {
-                              return LoginScreen();
+                              return const LoginScreen();
                             }));
                           },
                           child: Text(
                             'Login',
-                            style: GoogleFonts.getFont(
-                              'Nunito Sans',
-                              color: const Color.fromARGB(255, 17, 1, 195),
-                              fontWeight: FontWeight.bold,
-                              letterSpacing: 0.2,
-                              fontSize: 14,
-                            ),
+                            style: Theme.of(context).textTheme.labelMedium
                           ),
                         )
                       ],

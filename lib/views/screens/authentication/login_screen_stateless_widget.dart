@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:online_store/controllers/auth_controller.dart';
-import 'package:online_store/views/custom_widgets/auth_top_part.dart';
-import 'package:online_store/views/custom_widgets/custom_button.dart';
+import 'package:online_store/views/widgets/custom_widgets/auth_top_part.dart';
+import 'package:online_store/views/widgets/custom_widgets/custom_button.dart';
 import 'package:online_store/views/screens/authentication/signup_screen.dart';
 
 //توی آموزش اصلی از نوع استیت فول هست

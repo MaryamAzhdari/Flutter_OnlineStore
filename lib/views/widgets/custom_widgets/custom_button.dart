@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:online_store/services/theme_service.dart';
+import 'package:online_store/theme.dart';
 
 class Custom_Button extends StatelessWidget {
   final Function() onTap;
   final String title;
   final bool isLoading;
 
- const Custom_Button(
+  const Custom_Button(
       {super.key,
-      required  this.onTap,
+      required this.onTap,
       required this.title,
-      required this.isLoading
-      });
-  
-  
+      required this.isLoading});
+
   @override
   Widget build(BuildContext context) {
+    ThemeService themeService = ThemeService();
     return InkWell(
       onTap: () => onTap(),
       child: Container(
@@ -23,10 +23,18 @@ class Custom_Button extends StatelessWidget {
           height: 50,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(5),
-            gradient: const LinearGradient(colors: [
-              Color.fromARGB(255, 2, 48, 98),
-              Color.fromARGB(255, 105, 116, 144),
-            ], begin: Alignment.bottomCenter, end: Alignment.topCenter),
+            gradient: LinearGradient(
+                colors: themeService.isLightModeOn
+                    ? [
+                        AppTheme.mcCustomBtnGradientFirstColor,
+                        AppTheme.mcCustomBtnGradientSecondColor,
+                      ]
+                    : [
+                        AppTheme.mcCustomBtnGradientFirstColor.withOpacity(0.5),
+                        AppTheme.mcCustomBtnGradientSecondColor.withOpacity(0.5),
+                      ],
+                begin: Alignment.bottomCenter,
+                end: Alignment.topCenter),
           ),
           child: Stack(
             children: [
@@ -42,7 +50,10 @@ class Custom_Button extends StatelessWidget {
                       decoration: BoxDecoration(
                           border: Border.all(
                               width: 12,
-                              color: const Color.fromARGB(255, 49, 157, 220)),
+                              color: themeService.isLightModeOn
+                                  ? AppTheme.mcCustomBtnBackgroundColor
+                                  : AppTheme.mcCustomBtnBackgroundColor
+                                      .withOpacity(0.5)),
                           borderRadius: BorderRadius.circular(30)),
                     ),
                   )),
@@ -58,7 +69,10 @@ class Custom_Button extends StatelessWidget {
                       decoration: BoxDecoration(
                           border: Border.all(
                               width: 3,
-                              color: const Color.fromARGB(255, 49, 157, 220)),
+                              color: themeService.isLightModeOn
+                                  ? AppTheme.mcCustomBtnCircle1Color
+                                  : AppTheme.mcCustomBtnCircle1Color
+                                      .withOpacity(0.5)),
                           borderRadius: BorderRadius.circular(5)),
                     ),
                   )),
@@ -72,7 +86,9 @@ class Custom_Button extends StatelessWidget {
                       height: 15,
                       clipBehavior: Clip.antiAlias,
                       decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: themeService.isLightModeOn
+                              ? AppTheme.mcCustomBtnCircle2Color
+                              : AppTheme.mcCustomBtnCircle2Color.withOpacity(0.5),
                           borderRadius: BorderRadius.circular(10)),
                     ),
                   )),
@@ -86,22 +102,21 @@ class Custom_Button extends StatelessWidget {
                       height: 20,
                       clipBehavior: Clip.antiAlias,
                       decoration: BoxDecoration(
-                          color: Colors.white,
+                          //color: Colors.white,
+                          color: themeService.isLightModeOn
+                              ? AppTheme.mcCustomBtnCircle2Color
+                              : AppTheme.mcCustomBtnCircle2Color.withOpacity(0.5),
                           borderRadius: BorderRadius.circular(10)),
                     ),
                   )),
               Center(
-                child: isLoading ? const CircularProgressIndicator(color: Colors.white,): 
-                Text(
-                  title,
-                  style: GoogleFonts.getFont(
-                    'Nunito Sans',
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    letterSpacing: 0.2,
-                    fontSize: 20,
-                  ),
-                ),
+                child: isLoading
+                    ? CircularProgressIndicator(
+                        color: Theme.of(context).primaryColor)
+                    : Text(
+                        title,
+                        style: Theme.of(context).textTheme.labelLarge,
+                      ),
               )
             ],
           )),

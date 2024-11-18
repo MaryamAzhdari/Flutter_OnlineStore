@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class AuthTopPart extends StatelessWidget {
   final String title;
@@ -11,17 +10,17 @@ class AuthTopPart extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(mainAxisAlignment: MainAxisAlignment.center, children: [
        Text(title,
-          style: GoogleFonts.getFont('Lato',
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
-              letterSpacing: 0.2,
-              fontSize: 23)),
+          style: Theme.of(context).textTheme.titleLarge
+          // GoogleFonts.getFont('Lato',
+          //     color: themeService.isLightModeOn
+          //                         ? AppTheme.textColorLight
+          //                         : AppTheme.textColorDark,
+          //     fontWeight: FontWeight.bold,
+          //     letterSpacing: 0.2,
+          //     fontSize: 23)
+              ),
        Text(sunTitle,
-          style: GoogleFonts.getFont('Lato',
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
-              letterSpacing: 0.2,
-              fontSize: 14)),
+          style: Theme.of(context).textTheme.titleSmall),
       Image.asset(
         imgPath,
         width: 300,
