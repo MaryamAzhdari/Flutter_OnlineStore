@@ -28,6 +28,7 @@ class MyApp extends StatelessWidget {
       //theme: appTheme,
       darkTheme: AppTheme.darkTheme,
         home: RootNottumNavigationScreen(),
+        
         // routes: <String, WidgetBuilder>{
         //   '/root': (BuildContext context) =>
         //       const RootBottomNavigationExample(),
