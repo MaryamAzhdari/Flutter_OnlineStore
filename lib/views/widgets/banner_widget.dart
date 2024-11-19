@@ -21,43 +21,40 @@ class _BannerWidgetState extends State<BannerWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Container(
-        width: MediaQuery.of(context).size.width,
-        height: 170,
-        decoration: BoxDecoration(
-          color: const Color.fromARGB(255, 210, 209, 209),
-          borderRadius: BorderRadius.circular(8),
-        ),
-        child: FutureBuilder(
-        future: futuresBanner,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
-          } else if (snapshot.hasError) {
-            return Center(
-              child: Text('Error: ${snapshot.error}'),
-            );
-          } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return const Center(
-              child: Text('No Banners'),
-            );
-          } else {
-            final banners = snapshot.data!;
-            return PageView.builder(
-                itemCount: banners.length,
-                
-                itemBuilder: (context, index) {
-                  final banner = banners[index];
-                  return Image.network(
-                    banner.image,
-                    fit: BoxFit.cover,
-                  );
-                });
-          }
-        }),
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      height: 170,
+      decoration: BoxDecoration(
+        color: const Color.fromARGB(255, 210, 209, 209),
+        borderRadius: BorderRadius.circular(8),
       ),
+      child: FutureBuilder(
+      future: futuresBanner,
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(child: CircularProgressIndicator());
+        } else if (snapshot.hasError) {
+          return Center(
+            child: Text('Error: ${snapshot.error}'),
+          );
+        } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+          return const Center(
+            child: Text('No Banners'),
+          );
+        } else {
+          final banners = snapshot.data!;
+          return PageView.builder(
+              itemCount: banners.length,
+              
+              itemBuilder: (context, index) {
+                final banner = banners[index];
+                return Image.network(
+                  banner.image,
+                  fit: BoxFit.cover,
+                );
+              });
+        }
+      }),
     );
   }
 }

@@ -27,7 +27,7 @@ class _CategoryItemWidgetState extends State<CategoryItemWidget> {
         future: futureCategory,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const CircularProgressIndicator();
+            return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
             return Center(
               child: Text('Error: ${snapshot.error}'),
@@ -45,26 +45,24 @@ class _CategoryItemWidgetState extends State<CategoryItemWidget> {
                 gridDelegate:
                     const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 4,
-                        crossAxisSpacing: 8,
-                        mainAxisSpacing: 8),
+                        crossAxisSpacing: 2,
+                        mainAxisSpacing: 2
+                        ),
                 itemBuilder: (context, index) {
                   final category = categories[index];
-                  return Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      children: [
-                        Image.network(
-                          category.image,
-                          width: 50,
-                          height: 50,
-                        ),
-                        Text(category.name,
-                        style: const TextStyle(
-                                      color: AppTheme.mcDarkGreyColor,
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w600),)
-                      ],
-                    ),
+                  return Column(
+                    children: [
+                      Image.network(
+                        category.image,
+                        width: 50,
+                        height: 50,
+                      ),
+                      Text(category.name,
+                      style: const TextStyle(
+                                    color: AppTheme.mcDarkGreyColor,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w600),)
+                    ],
                   );
                 });
           }

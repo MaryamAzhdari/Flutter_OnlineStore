@@ -180,6 +180,13 @@ class AppTheme {
         fontWeight: FontWeight.w200,
         color: mcHintColor,
       ),
+      //Title Text Row
+      displayLarge: TextStyle(
+        fontSize: 16.0,
+        letterSpacing: 0.1,
+        fontWeight: FontWeight.bold,
+        color: Color.fromARGB(255, 4, 63, 111),
+      ),
     ),
   );
 
@@ -249,6 +256,13 @@ class AppTheme {
         letterSpacing: 0.1,
         fontWeight: FontWeight.w200,
         color: mcHintColor,
+      ),
+      //Title Text Row
+      displayLarge: TextStyle(
+        fontSize: 16.0,
+        letterSpacing: 0.1,
+        fontWeight: FontWeight.bold,
+        color: Color.fromARGB(255, 110, 177, 232)
       ),
     ),
   );

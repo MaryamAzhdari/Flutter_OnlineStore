@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:online_store/views/screens/nav_screens/account_screen.dart';
 import 'package:online_store/views/screens/nav_screens/cart_screen.dart';
+import 'package:online_store/views/screens/nav_screens/category_screen.dart';
 import 'package:online_store/views/screens/nav_screens/favorite.dart';
 import 'package:online_store/views/screens/nav_screens/home_screen.dart';
 import 'package:online_store/views/screens/nav_screens/store_screen.dart';
@@ -18,6 +19,7 @@ class _RootNottumNavigationScreenState
   final List<Widget> pages = [
     const HomeScreen(),
     const FavoriteScreen(),
+    const CategoryScreen(),
     const StoreScreen(),
     const CartScreen(),
     const AccountScreen()
@@ -39,6 +41,8 @@ class _RootNottumNavigationScreenState
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
           BottomNavigationBarItem(
               icon: Icon(Icons.favorite), label: "Favorite"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.category), label: "Categories"),
           BottomNavigationBarItem(icon: Icon(Icons.store), label: "Store"),
           BottomNavigationBarItem(
               icon: Icon(Icons.card_giftcard), label: "Cart"),
